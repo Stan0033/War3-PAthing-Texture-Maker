@@ -1,0 +1,45 @@
+c:\users\stan0033_pc\documents\visual studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe.config
+c:\users\stan0033_pc\documents\visual studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.g.cs
+c:\users\stan0033_pc\documents\visual studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\App.g.cs
+c:\users\stan0033_pc\documents\visual studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.cache
+c:\users\stan0033_pc\documents\visual studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.lref
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.pdb
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.AssemblyReference.cache
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.baml
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.g.resources
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom_Pathing_Texture_Maker.Properties.Resources.resources
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.GenerateResource.cache
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.CoreCompileInputs.cache
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.exe
+C:\Users\stan0033_PC\Documents\Visual Studio 2013\Projects\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.pdb
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe.config
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.pdb
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.AssemblyReference.cache
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.g.cs
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\App.g.cs
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.cache
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.lref
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.baml
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.g.resources
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom_Pathing_Texture_Maker.Properties.Resources.resources
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.GenerateResource.cache
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.CoreCompileInputs.cache
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.exe
+D:\Projects\C#\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.pdb
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe.config
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.pdb
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.AssemblyReference.cache
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.g.cs
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\App.g.cs
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.cache
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.lref
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.baml
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.g.resources
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom_Pathing_Texture_Maker.Properties.Resources.resources
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.GenerateResource.cache
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.CoreCompileInputs.cache
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.exe
+C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.pdb

@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Custom Pathing Texture Maker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|c:\\custom pathing texture maker\\custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|C:\\Custom Pathing Texture Maker\\custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Custom Pathing Texture Maker\\Custom Pathing Texture Maker\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Custom Pathing Texture Maker\\MainWindow.xaml",
+              "ToolTip": "C:\\Custom Pathing Texture Maker\\Custom Pathing Texture Maker\\MainWindow.xaml",
+              "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-27T23:10:20.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Custom Pathing Texture Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Custom Pathing Texture Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAG4BAAAAAAAAAAAiwBkCAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T23:10:21.026Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
