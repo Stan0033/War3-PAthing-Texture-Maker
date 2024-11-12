@@ -998,7 +998,10 @@ namespace Custom_Pathing_Texture_Maker
 
                 }
             }
-            Swap(list[0], list[1]);
+            if (list.Count == 2)
+            {
+                Swap(list[0], list[1]);
+            }
         }
     }
 

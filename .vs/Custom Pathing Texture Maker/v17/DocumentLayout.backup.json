@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|c:\\github\\war3-pathing-texture-maker\\custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|C:\\Github\\War3-PAthing-Texture-Maker\\custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
               "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAKcCAAAAAAAAAAAnwLsCAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAANUDAAAAAAAAAAAuwOsDAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-12T04:42:29.793Z",
               "EditorCaption": ""
@@ -46,8 +46,7 @@
               "ToolTip": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml",
               "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-12T04:42:27.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T04:42:27.645Z"
             }
           ]
         }
