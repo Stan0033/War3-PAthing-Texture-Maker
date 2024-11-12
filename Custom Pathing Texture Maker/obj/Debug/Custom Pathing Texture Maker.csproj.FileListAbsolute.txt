@@ -43,3 +43,20 @@ C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pa
 C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.CoreCompileInputs.cache
 C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.exe
 C:\Custom Pathing Texture Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.pdb
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe.config
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.exe
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\bin\Debug\Custom Pathing Texture Maker.pdb
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.AssemblyReference.cache
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.g.cs
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\App.g.cs
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.cache
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker_MarkupCompile.lref
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\MainWindow.baml
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.g.resources
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom_Pathing_Texture_Maker.Properties.Resources.resources
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.GenerateResource.cache
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.csproj.CoreCompileInputs.cache
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.exe
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\Custom Pathing Texture Maker.pdb
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\colorspicker.g.cs
+C:\Github\War3-PAthing-Texture-Maker\Custom Pathing Texture Maker\obj\Debug\colorspicker.baml

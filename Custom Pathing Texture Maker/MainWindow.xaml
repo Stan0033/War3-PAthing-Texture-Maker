@@ -9,7 +9,7 @@
         Loaded="Window_Loaded"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Custom Pathing Texture Maker for Warcraft III" Height="470" Width="660">
+        Title="Custom Pathing Texture Maker for Warcraft III" Height="470" Width="680">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"></ColumnDefinition>
@@ -43,12 +43,12 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
             </StackPanel>
             <CheckBox Name="Check_BG" Checked="Checked_showImage" Unchecked="Checked_showImage">Show town hall for comparison</CheckBox>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="White"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="White"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintWhite"/>
                 <TextBlock Text="None" Margin="5" Foreground="Red" FontWeight="Bold"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Red"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Red"   Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintRed"/>
                 <Label Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Green" Text= "Build, Fly," FontWeight="Bold"/>
@@ -59,7 +59,7 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Yellow"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Yellow"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintYellow"/>
                 <Label Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Green" Text= "Build," FontWeight="Bold"/>
@@ -70,7 +70,7 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Green"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Green"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintGreen"/>
                 <Label Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Green" Text= "Build, " FontWeight="Bold"/>
@@ -82,7 +82,7 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Cyan"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Cyan"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintTeal"/>
                 <Label Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Red" Text= "Build, " FontWeight="Bold"/>
@@ -94,7 +94,7 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Blue"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Blue"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintBlue"/>
                 <Label Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Red" Text= "Build, " FontWeight="Bold"/>
@@ -106,7 +106,7 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Magenta"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Magenta"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintMAgenta"/>
                 <Label Margin="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="Red" Text= "Build, " FontWeight="Bold"/>
@@ -118,7 +118,7 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Height="20" Width="20" Margin="5" Background="Black"  Cursor="Hand" Click="SetCurrentBrush"/>
+                <Button Height="20" Width="20" Margin="5" Background="Black"  Cursor="Hand" Click="SetCurrentBrush" MouseDown="PaintBlack"/>
                 <TextBlock Text="All" Margin="5" FontWeight="Bold" Foreground="Green"/>
             </StackPanel>
             <CheckBox Name="Check_Outer" Margin="5">Trim outer black pixels when saving</CheckBox>
@@ -130,6 +130,19 @@ Width="400" MouseDown="MainCanvas_MouseDown" Background="Transparent" >
             <Button Padding="5" Margin="5" Cursor="Hand" Click="save" Width="80">Save...</Button>
             <Button Padding="5" Margin="5" Cursor="Hand" Click="loadImage" Width="170">Load image for comparison</Button>
             <Button Padding="5" Margin="5" Cursor="Hand"   Width="100" Click="UnloadImage">Unload image</Button>
+            <Button Name="ButtonMore" Padding="5" Margin="5" Cursor="Hand"   Width="100" Click="ShowMoreOptions" Content="More...">
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Flip Horizontally" Click="FlipHorizontallys"/>
+                        <MenuItem Header="Flip Vertically" Click="FlipVertically"/>
+                        <MenuItem Header="Flip by 90C" Click="Rotate90"/>
+                        <MenuItem Header="Flip by -90C" Click="Rotate90m"/>
+                        <MenuItem Header="Replace Color..." Click="replacecolor"/>
+                        <MenuItem Header="Swap colors" Click="swapcolor"/>
+                        <MenuItem Header="Swap Two Similars" Click="swaptwo"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
         </StackPanel>
     </Grid>
 

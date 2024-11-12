@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
  
 using System.Windows.Input;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
  
 using System.Windows.Shapes;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace Custom_Pathing_Texture_Maker
 {
@@ -28,7 +31,7 @@ namespace Custom_Pathing_Texture_Maker
             InitializeComponent();
             Clearall(null, null);
             ReDraw();
-           
+
 
 
         }
@@ -178,10 +181,14 @@ namespace Custom_Pathing_Texture_Maker
         private void save(object sender, RoutedEventArgs e)
         {
             BitmapSource output = CreateBitmapFromGrid(Grid);
+
             if (Check_Outer.IsChecked == true) output = TrimBlackBorders(output);
             SaveBitmapSourceAsTga(output);
 
         }
+
+
+
 
         private void ChangedColumns(object sender, TextChangedEventArgs e)
         {
@@ -317,10 +324,10 @@ namespace Custom_Pathing_Texture_Maker
         {
             Button b = sender as Button;
             CurrentBrush = b.Background;
-            
+
         }
 
-        
+
 
         private BitmapSource CreateBitmapFromGrid(System.Windows.Media.Brush[,] grid)
         {
@@ -358,8 +365,53 @@ namespace Custom_Pathing_Texture_Maker
 
             // Write the pixel data to the bitmap
             bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * sizeof(int), 0);
-
+            FlipHorizontally(bitmap);
             return bitmap;
+        }
+
+
+
+        private void FlipHorizontally(WriteableBitmap bitmap)
+        {
+            // Lock the bitmap to access pixel data
+            bitmap.Lock();
+
+            int width = bitmap.PixelWidth;
+            int height = bitmap.PixelHeight;
+            int bytesPerPixel = bitmap.Format.BitsPerPixel / 8;
+            int stride = bitmap.BackBufferStride;
+            IntPtr buffer = bitmap.BackBuffer;
+
+            // Iterate over each row
+            for (int y = 0; y < height; y++)
+            {
+                // Calculate the start of the row
+                IntPtr rowStart = (IntPtr)(buffer.ToInt64() + y * stride);
+
+                // Flip each row horizontally
+                for (int x = 0; x < width / 2; x++)
+                {
+                    // Calculate addresses for left and right pixels
+                    IntPtr leftPixel = (IntPtr)(rowStart.ToInt64() + x * bytesPerPixel);
+                    IntPtr rightPixel = (IntPtr)(rowStart.ToInt64() + (width - 1 - x) * bytesPerPixel);
+
+                    // Swap the pixel data
+                    byte[] temp = new byte[bytesPerPixel];
+                    System.Runtime.InteropServices.Marshal.Copy(leftPixel, temp, 0, bytesPerPixel);
+
+                    byte[] rightPixelData = new byte[bytesPerPixel];
+                    System.Runtime.InteropServices.Marshal.Copy(rightPixel, rightPixelData, 0, bytesPerPixel);
+
+                    System.Runtime.InteropServices.Marshal.Copy(rightPixelData, 0, leftPixel, bytesPerPixel);
+                    System.Runtime.InteropServices.Marshal.Copy(temp, 0, rightPixel, bytesPerPixel);
+                }
+            }
+
+            // Unlock the bitmap after modification
+            bitmap.Unlock();
+
+            // Optionally, call Invalidate to update the bitmap
+            //  bitmap.AddDirtyRect(new System.Windows.Int32Rect(0, 0, width, height));
         }
         public int WpfColorToArgb(System.Windows.Media.Color color)
         {
@@ -553,14 +605,14 @@ namespace Custom_Pathing_Texture_Maker
                             }
                             // Convert the resized Bitmap to ImageSource
                             CurrentImageForComparison = ConvertBitmapToImageSource(resizedBitmap);
-                            SetImage( );
+                            SetImage();
                         }
                     }
                     else
                     {
                         // No resizing needed, convert directly to ImageSource
                         CurrentImageForComparison = ConvertBitmapToImageSource(originalBitmap);
-                        SetImage( );
+                        SetImage();
                     }
                 }
             }
@@ -610,7 +662,7 @@ namespace Custom_Pathing_Texture_Maker
             }
             else
             {
-               
+
                 ComparisonImage2.Height = CurrentImageForComparison.Height;
                 ComparisonImage2.Width = CurrentImageForComparison.Width;
                 ComparisonImage2.Source = CurrentImageForComparison;
@@ -627,8 +679,330 @@ namespace Custom_Pathing_Texture_Maker
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           // GetSystemDPI();
+            // GetSystemDPI();
+        }
+        private void Paint(System.Windows.Media.Brush brush)
+        {
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    Grid[x, y] = brush;
+
+
+                }
+                ReDraw();
+            }
+        }
+        private void PaintBlacks(System.Windows.Media.Brush brush)
+        {
+           
+            for (int x = 0; x < 40; x++)
+            {
+                for (int y = 0; y < 40; y++)
+                {
+                    if (Grid[x, y] == System.Windows.Media.Brushes.Black)
+                    {
+                        Grid[x, y] = brush;
+                    }
+
+
+
+                }
+                ReDraw();
+            }
+        }
+
+        private void PaintWhite(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.White);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.White);
+            }
+        }
+
+        private void PaintRed(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Red);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Red);
+            }
+        }
+
+        private void PaintYellow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Yellow);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Yellow);
+            }
+        }
+
+        private void PaintGreen(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Green);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Green);
+            }
+        }
+
+        private void PaintTeal(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Teal);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Teal);
+            }
+        }
+
+        private void PaintBlue(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Blue);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Blue);
+            }
+        }
+
+        private void PaintMAgenta(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Magenta);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Magenta);
+            }
+        }
+
+        private void PaintBlack(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+            {
+
+                Paint(System.Windows.Media.Brushes.Black);
+            }
+            if (e.ChangedButton == MouseButton.Middle)
+            {
+                PaintBlacks(System.Windows.Media.Brushes.Black);
+            }
+        }
+
+        private void ShowMoreOptions(object sender, RoutedEventArgs e)
+        {
+            ButtonMore.ContextMenu.IsOpen = true;
+        }
+
+        private void FlipHorizontallys(object sender, RoutedEventArgs e)
+        {
+            int rows = Rows;
+            int cols = Columns;
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols / 2; j++)
+                {
+                    // Swap elements across the horizontal middle
+                    Brush temp = Grid[i, j];
+                    Grid[i, j] = Grid[i, cols - j - 1];
+                    Grid[i, cols - j - 1] = temp;
+                }
+            }
+            ReDraw();
+        }
+
+        private void FlipVertically(object sender, RoutedEventArgs e)
+        {
+            int rows = Rows;
+            int cols = Columns;
+            for (int i = 0; i < rows / 2; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    // Swap elements across the vertical middle
+                    Brush temp = Grid[i, j];
+                    Grid[i, j] = Grid[rows - i - 1, j];
+                    Grid[rows - i - 1, j] = temp;
+                }
+            }
+            ReDraw();
+        }
+
+        private void Rotate90(object sender, RoutedEventArgs e)
+        {
+
+            int rows = Rows;
+            int cols = Columns;
+            Brush[,] rotated = new Brush[cols, rows];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    // Rotate 90 degrees clockwise
+                    rotated[j, rows - i - 1] = Grid[i, j];
+                }
+            }
+
+            Grid = rotated;
+            ReDraw();
+        }
+    
+ 
+
+        private void Rotate90m(object sender, RoutedEventArgs e)
+        {
+            int rows = Rows;
+            int cols = Columns;
+            Brush[,] rotated = new Brush[cols, rows];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    // Rotate 90 degrees counterclockwise
+                    rotated[cols - j - 1, i] = Grid[i, j];
+                }
+            }
+
+            Grid = rotated;
+            ReDraw();
+        }
+
+        private void replacecolor(object sender, RoutedEventArgs e)
+        {
+            colorspicker dialog = new colorspicker();
+            dialog.Title = "Repalce color";
+            dialog.ShowDialog();
+            if (dialog.DialogResult == true)
+            {
+                Brush FirstBrush = GetBrushFromCombobox((dialog.Combo1.SelectedItem as ComboBoxItem).Content.ToString());
+                Brush SecondBrush = GetBrushFromCombobox((dialog.Combo1.SelectedItem as ComboBoxItem).Content.ToString());
+                for (int i = 0; i < Rows; i++)
+                {
+                    for (int j = 0; j < Columns; j++)
+                    {
+                        if (Grid[i, j] == FirstBrush)
+                        {
+                            Grid[i, j] = SecondBrush;
+                        }
+                        
+                    }
+                }
+            }
+            ReDraw();
+        }
+        private Brush GetBrushFromCombobox(string text)
+        {
+            switch (text)
+            {
+                case "Red": return Brushes.Red;
+                case "Yellow": return Brushes.Yellow;
+                case "Teal": return Brushes.Teal;
+                case "Blue": return Brushes.Blue;
+                case "Magenta": return Brushes.Magenta;
+                case "White": return Brushes.White;
+                case "Black": return Brushes.Black;
+                case "Green": return Brushes.Green;
+                default: return Brushes.Black;
+            }
+        }
+        private void swapcolor(object sender, RoutedEventArgs e)
+        {
+            colorspicker dialog = new colorspicker();
+            dialog.Title = "Swap color";
+            dialog.ShowDialog();
+            if (dialog.DialogResult == true)
+            {
+                Brush FirstBrush = GetBrushFromCombobox((dialog.Combo1.SelectedItem as ComboBoxItem).Content.ToString());
+                Brush SecondBrush = GetBrushFromCombobox((dialog.Combo1.SelectedItem as ComboBoxItem).Content.ToString());
+                Swap(FirstBrush, SecondBrush);
+               
+            }
+        }
+        private void Swap(Brush one, Brush two)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    // Step 1: Replace 'one' with the placeholder
+                    if (Grid[i, j] == one)
+                    {
+                        Grid[i, j] = Brushes.Gold;
+                    }
+                    // Step 2: Replace 'two' with 'one'
+                    else if (Grid[i, j] == two)
+                    {
+                        Grid[i, j] = one;
+                    }
+                }
+            }
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    // Step 3: Replace all placeholders with 'two'
+                    if (Grid[i, j] == Brushes.Gold)
+                    {
+                        Grid[i, j] = two;
+                    }
+                }
+            }
+
+            ReDraw();
+        }
+
+        private void swaptwo(object sender, RoutedEventArgs e)
+        {
+            List<Brush> list = new List<Brush>();
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    if (list.Contains(Grid[i, j]) == false)
+                    {
+                        list.Add(Grid[i, j]);
+                    }
+
+                }
+            }
+            Swap(list[0], list[1]);
         }
     }
-}
+
+
+    }
+ 
  
