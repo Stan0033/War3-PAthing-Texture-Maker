@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
  
 using System.Windows.Shapes;
+using System.Xml;
 using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
 
@@ -25,12 +26,17 @@ namespace Custom_Pathing_Texture_Maker
     {
         int Columns = 40;
         int Rows = 40;
+        bool Autosize = false;
+        int CurrentStackPosition = 0;   
         System.Windows.Media.Brush[,] Grid = new System.Windows.Media.Brush[40, 40];
+        List<Brush[,]> Grids = new List<Brush[,]>();
+      
         public MainWindow() // constructor
         {
             InitializeComponent();
-            Clearall(null, null);
+           
             ReDraw();
+            Grids.Add(Grid);
 
 
 
@@ -211,10 +217,18 @@ namespace Custom_Pathing_Texture_Maker
         private void ReDraw()
         {
             // Configurable variables
-            int maxRows = Rows;          // Use the provided Rows variable
-            int maxColumns = Columns;    // Use the provided Columns variable
-            double canvasSize = 400;     // Total canvas size
-            double cellSize = 10;        // Cell size of 10 pixels
+            int maxRows = Rows;
+            int maxColumns = Columns;
+            double canvasSize = 400;
+            double cellSize = 10;
+
+            if (Autosize)
+            {
+                // Calculate the maximum square cell size that fits within the canvas
+                double cellSizeW = canvasSize / maxColumns;
+                double cellSizeH = canvasSize / maxRows;
+                cellSize = Math.Min(cellSizeW, cellSizeH); // Use the smaller size to ensure squares
+            }
 
             // Clear existing children from the canvas
             CanvasGrid.Children.Clear();
@@ -231,7 +245,6 @@ namespace Custom_Pathing_Texture_Maker
                     {
                         Width = cellSize,
                         Height = cellSize,
-
                         Fill = brush // Set the fill color based on the Grid
                     };
 
@@ -244,7 +257,7 @@ namespace Custom_Pathing_Texture_Maker
                 }
             }
 
-            // Draw grid lines
+            // Draw vertical grid lines
             for (int i = 0; i <= maxColumns; i++)
             {
                 double x = i * cellSize;
@@ -252,15 +265,15 @@ namespace Custom_Pathing_Texture_Maker
                 {
                     X1 = x,
                     Y1 = 0,
-                    // Draw only to the height of existing rows or the full canvas size
                     X2 = x,
-                    Y2 = (maxRows <= Grid.GetLength(0) ? maxRows * cellSize : canvasSize),
+                    Y2 = maxRows * cellSize,
                     Stroke = System.Windows.Media.Brushes.Gray,
                     StrokeThickness = 1
                 };
                 CanvasGrid.Children.Add(line);
             }
 
+            // Draw horizontal grid lines
             for (int j = 0; j <= maxRows; j++)
             {
                 double y = j * cellSize;
@@ -268,8 +281,7 @@ namespace Custom_Pathing_Texture_Maker
                 {
                     X1 = 0,
                     Y1 = y,
-                    // Draw only to the width of existing columns or the full canvas size
-                    X2 = (maxColumns <= Grid.GetLength(1) ? maxColumns * cellSize : canvasSize),
+                    X2 = maxColumns * cellSize,
                     Y2 = y,
                     Stroke = System.Windows.Media.Brushes.Gray,
                     StrokeThickness = 1
@@ -278,14 +290,23 @@ namespace Custom_Pathing_Texture_Maker
             }
         }
 
+
         System.Windows.Media.Brush CurrentBrush = System.Windows.Media.Brushes.Black;
         private void MainCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             // Get the mouse click position
             System.Windows.Point mousePosition = e.GetPosition(CanvasGrid);
 
-            // Calculate the cell size
-            double cellSize = 400.0 / 40; // Assuming a fixed canvas size of 400 and 40 rows/columns
+            // Calculate a unified cell size based on Autosize and canvas dimensions
+            double cellSize = 10; // Default cell size
+
+            if (Autosize)
+            {
+                // Calculate the cell size to keep cells square and fit within the canvas dimensions
+                double cellSizeW = CanvasGrid.ActualWidth / Columns;
+                double cellSizeH = CanvasGrid.ActualHeight / Rows;
+                cellSize = Math.Min(cellSizeW, cellSizeH);
+            }
 
             // Calculate the row and column indices based on the mouse position
             int columnIndex = (int)(mousePosition.X / cellSize);
@@ -295,14 +316,22 @@ namespace Custom_Pathing_Texture_Maker
             if (columnIndex >= 0 && columnIndex < Grid.GetLength(1) &&
                 rowIndex >= 0 && rowIndex < Grid.GetLength(0))
             {
+                CloneGrid();
+
                 // Set the color of the clicked cell in the Grid to the CurrentBrush
-                Grid[rowIndex, columnIndex] = CurrentBrush;
+                if (e.ChangedButton == MouseButton.Left)
+                {
+                    Grid[rowIndex, columnIndex] = CurrentBrush;
+                }
+                else if (e.ChangedButton == MouseButton.Right)
+                {
+                    Grid[rowIndex, columnIndex] = Brushes.Black;
+                }
 
                 // Optionally, redraw the canvas to reflect the updated color
                 ReDraw();
             }
         }
-
 
 
         private void Clearall(object sender, RoutedEventArgs e)
@@ -317,6 +346,11 @@ namespace Custom_Pathing_Texture_Maker
                     Grid[i, j] = System.Windows.Media.Brushes.Black; // Reset each element to Brushes.Black
                 }
             }
+            Grid = Grids[CurrentStackPosition];
+            Grids.Clear();
+            Grids.Add(Grid);
+            CurrentStackPosition = 0;
+
             ReDraw();
         }
 
@@ -365,53 +399,31 @@ namespace Custom_Pathing_Texture_Maker
 
             // Write the pixel data to the bitmap
             bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * sizeof(int), 0);
-            FlipHorizontally(bitmap);
+            bitmap= FlipBitmap(bitmap, false, true);
             return bitmap;
         }
 
 
-
-        private void FlipHorizontally(WriteableBitmap bitmap)
+        public static WriteableBitmap FlipBitmap(WriteableBitmap sourceBitmap, bool flipHorizontally, bool flipVertically)
         {
-            // Lock the bitmap to access pixel data
-            bitmap.Lock();
+            if (sourceBitmap == null)
+                throw new ArgumentNullException(nameof(sourceBitmap));
 
-            int width = bitmap.PixelWidth;
-            int height = bitmap.PixelHeight;
-            int bytesPerPixel = bitmap.Format.BitsPerPixel / 8;
-            int stride = bitmap.BackBufferStride;
-            IntPtr buffer = bitmap.BackBuffer;
+            // Create a ScaleTransform based on the desired flip direction
+            var transformGroup = new TransformGroup();
+            var scaleX = flipHorizontally ? -1 : 1;
+            var scaleY = flipVertically ? -1 : 1;
 
-            // Iterate over each row
-            for (int y = 0; y < height; y++)
-            {
-                // Calculate the start of the row
-                IntPtr rowStart = (IntPtr)(buffer.ToInt64() + y * stride);
+            // Flip horizontally and/or vertically based on parameters
+            transformGroup.Children.Add(new ScaleTransform(scaleX, scaleY, 0.5, 0.5));
 
-                // Flip each row horizontally
-                for (int x = 0; x < width / 2; x++)
-                {
-                    // Calculate addresses for left and right pixels
-                    IntPtr leftPixel = (IntPtr)(rowStart.ToInt64() + x * bytesPerPixel);
-                    IntPtr rightPixel = (IntPtr)(rowStart.ToInt64() + (width - 1 - x) * bytesPerPixel);
+            // Apply the transform to the bitmap using a TransformedBitmap
+            var transformedBitmap = new TransformedBitmap(sourceBitmap, transformGroup);
 
-                    // Swap the pixel data
-                    byte[] temp = new byte[bytesPerPixel];
-                    System.Runtime.InteropServices.Marshal.Copy(leftPixel, temp, 0, bytesPerPixel);
+            // Convert the TransformedBitmap to a WriteableBitmap to return the result
+            var flippedBitmap = new WriteableBitmap(transformedBitmap);
 
-                    byte[] rightPixelData = new byte[bytesPerPixel];
-                    System.Runtime.InteropServices.Marshal.Copy(rightPixel, rightPixelData, 0, bytesPerPixel);
-
-                    System.Runtime.InteropServices.Marshal.Copy(rightPixelData, 0, leftPixel, bytesPerPixel);
-                    System.Runtime.InteropServices.Marshal.Copy(temp, 0, rightPixel, bytesPerPixel);
-                }
-            }
-
-            // Unlock the bitmap after modification
-            bitmap.Unlock();
-
-            // Optionally, call Invalidate to update the bitmap
-            //  bitmap.AddDirtyRect(new System.Windows.Int32Rect(0, 0, width, height));
+            return flippedBitmap;
         }
         public int WpfColorToArgb(System.Windows.Media.Color color)
         {
@@ -683,6 +695,7 @@ namespace Custom_Pathing_Texture_Maker
         }
         private void Paint(System.Windows.Media.Brush brush)
         {
+            CloneGrid();
             for (int x = 0; x < 40; x++)
             {
                 for (int y = 0; y < 40; y++)
@@ -696,7 +709,7 @@ namespace Custom_Pathing_Texture_Maker
         }
         private void PaintBlacks(System.Windows.Media.Brush brush)
         {
-           
+            CloneGrid();
             for (int x = 0; x < 40; x++)
             {
                 for (int y = 0; y < 40; y++)
@@ -938,11 +951,13 @@ namespace Custom_Pathing_Texture_Maker
         }
         private void swapcolor(object sender, RoutedEventArgs e)
         {
+
             colorspicker dialog = new colorspicker();
             dialog.Title = "Swap color";
             dialog.ShowDialog();
             if (dialog.DialogResult == true)
             {
+                 
                 Brush FirstBrush = GetBrushFromCombobox((dialog.Combo1.SelectedItem as ComboBoxItem).Content.ToString());
                 Brush SecondBrush = GetBrushFromCombobox((dialog.Combo1.SelectedItem as ComboBoxItem).Content.ToString());
                 Swap(FirstBrush, SecondBrush);
@@ -951,6 +966,7 @@ namespace Custom_Pathing_Texture_Maker
         }
         private void Swap(Brush one, Brush two)
         {
+            CloneGrid();
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Columns; j++)
@@ -982,9 +998,56 @@ namespace Custom_Pathing_Texture_Maker
 
             ReDraw();
         }
+        public static void RemoveAllAfterIndex<T>(List<T> list, int index)
+        {
+            if (list == null)
+                throw new ArgumentNullException(nameof(list));
 
+            if (index < 0 || index >= list.Count)
+                throw new ArgumentOutOfRangeException(nameof(index), "Index must be within the bounds of the list.");
+
+            // Remove elements starting from index + 1 until the end
+            list.RemoveRange(index + 1, list.Count - (index + 1));
+        }
+        public static Brush[,] CloneBrushArray(Brush[,] sourceArray)
+        {
+            if (sourceArray == null)
+                throw new ArgumentNullException(nameof(sourceArray));
+
+            int rows = sourceArray.GetLength(0);
+            int cols = sourceArray.GetLength(1);
+
+            // Create a new array with the same dimensions
+            Brush[,] clonedArray = new Brush[rows, cols];
+
+            // Copy each element from the source array to the new array
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    clonedArray[i, j] = sourceArray[i, j];
+                }
+            }
+
+            return clonedArray;
+        }
+        private void CloneGrid()
+        {
+            RemoveAllAfterIndex(Grids, CurrentStackPosition);
+            CurrentStackPosition++;
+            Grids.Add(CloneBrushArray(Grid));
+
+           
+           
+            Grid = Grids[CurrentStackPosition];
+            
+
+            // MessageBox.Show(CurrentStackPosition.ToString());  
+        }
         private void swaptwo(object sender, RoutedEventArgs e)
         {
+
+            CloneGrid();
             List<Brush> list = new List<Brush>();
 
             for (int i = 0; i < Rows; i++)
@@ -1002,6 +1065,60 @@ namespace Custom_Pathing_Texture_Maker
             {
                 Swap(list[0], list[1]);
             }
+        }
+
+        private void Checked_Autosize(object sender, RoutedEventArgs e)
+        {
+            Autosize = Check_resize.IsChecked == true;
+            ReDraw();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                if (e.Key == Key.S)
+                {
+                    save(null, null);
+                }
+                else if (e.Key == Key.O)
+                {
+                    open(null, null);
+                }
+                else if (e.Key == Key.Z)
+                {
+                    undo(null, null);
+                }
+                else if (e.Key == Key.Y)
+                {
+                    redo(null, null);
+                }
+                else if (e.Key == Key.R)
+                {
+                    Clearall(null, null);
+                }
+            }
+        }
+
+
+        private void undo(object sender, RoutedEventArgs e)
+        {
+           if (CurrentStackPosition - 1 == -1) { return; }
+                CurrentStackPosition--;
+                Grid = Grids[CurrentStackPosition];
+                ReDraw();
+                
+            
+        }
+
+        private void redo(object sender, RoutedEventArgs e)
+        {
+            if ( CurrentStackPosition+1 >= Grids.Count) { return; }
+            
+                CurrentStackPosition++;
+                Grid = Grids[CurrentStackPosition];
+                ReDraw();
+            
         }
     }
 

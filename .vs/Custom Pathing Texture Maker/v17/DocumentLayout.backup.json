@@ -3,12 +3,15 @@
   "WorkspaceRootPath": "C:\\Github\\War3-PAthing-Texture-Maker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|c:\\github\\war3-pathing-texture-maker\\custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|c:\\github\\war3-pathing-texture-maker\\custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|C:\\Github\\War3-PAthing-Texture-Maker\\custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stan0033_laptop\\AppData\\Local\\Temp\\.vsdbgsrc\\8699491ebfbb596b9d18abb0d5c9a83c9b43e5e84f88d98ca5c519553336fdc0\\BamlRecordReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|C:\\Github\\War3-PAthing-Texture-Maker\\custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{355EEA4D-9880-41B9-848D-F31D59C2DBCC}|Custom Pathing Texture Maker\\Custom Pathing Texture Maker.csproj|solutionrelative:custom pathing texture maker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,26 +30,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
-              "ViewState": "AgIAANUDAAAAAAAAAAAuwOsDAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T04:42:29.793Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Custom Pathing Texture Maker\\MainWindow.xaml",
               "ToolTip": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml",
               "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-12T04:42:27.645Z"
+              "WhenOpened": "2024-11-13T07:30:31.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BamlRecordReader.cs",
+              "DocumentMoniker": "C:\\Users\\stan0033_laptop\\AppData\\Local\\Temp\\.vsdbgsrc\\8699491ebfbb596b9d18abb0d5c9a83c9b43e5e84f88d98ca5c519553336fdc0\\BamlRecordReader.cs",
+              "RelativeDocumentMoniker": "..\\..\\Users\\stan0033_laptop\\AppData\\Local\\Temp\\.vsdbgsrc\\8699491ebfbb596b9d18abb0d5c9a83c9b43e5e84f88d98ca5c519553336fdc0\\BamlRecordReader.cs",
+              "ToolTip": "C:\\Users\\stan0033_laptop\\AppData\\Local\\Temp\\.vsdbgsrc\\8699491ebfbb596b9d18abb0d5c9a83c9b43e5e84f88d98ca5c519553336fdc0\\BamlRecordReader.cs",
+              "RelativeToolTip": "..\\..\\Users\\stan0033_laptop\\AppData\\Local\\Temp\\.vsdbgsrc\\8699491ebfbb596b9d18abb0d5c9a83c9b43e5e84f88d98ca5c519553336fdc0\\BamlRecordReader.cs",
+              "ViewState": "AgIAAAEDAAAAAAAAAAAAwDIDAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T14:44:29.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Github\\War3-PAthing-Texture-Maker\\Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Custom Pathing Texture Maker\\MainWindow.xaml.cs",
+              "ViewState": "AgIAACUBAAAAAAAAAAAQwE4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T04:42:29.793Z",
+              "EditorCaption": ""
             }
           ]
         }
